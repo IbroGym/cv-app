@@ -1,0 +1,27 @@
+@import '../../assets/styles/variables';
+
+span.button {
+  height: auto;
+  display: inline-flex;
+  align-items: center;
+  background-color: $color-dark;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 10px;
+  color: $color-white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  line-height: 20px;
+
+  &:hover {
+    background-color: $color-primary;
+  }
+
+  .button-icon {
+    margin-right: 8px;
+    display: inline-flex;
+    align-items: center;
+  }
+}

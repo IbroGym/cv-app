@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import Panel from './components/Panel';
+import Home from './pages/Home';
+import Inner from './pages/Inner';
+import './App.scss';
 
-function App() {
+function AppLayout() {
+  const location = useLocation();
+  const isInnerPage = location.pathname === '/inner';
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      {isInnerPage && <Panel />}
+      <main className={isInnerPage ? 'main-content with-panel' : 'main-content'}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/inner" element={<Inner />} />
+        </Routes>
+      </main>
     </div>
   );
 }
 
-export default App;
+export default AppLayout;

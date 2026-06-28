@@ -1,0 +1,27 @@
+@import '../../assets/styles/variables';
+
+.address {
+  dl {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 16px;
+
+    a {
+      color: $color-dark;
+    }
+
+    strong {
+      font-weight: 700;
+      display: block;
+    }
+
+    dt {
+      margin-right: 10px;
+      color: $color-primary;
+      font-size: 24px;
+      min-width: 50px;
+      text-align: center;
+    }
+  }
+}

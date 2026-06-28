@@ -1,0 +1,76 @@
+@import '../../assets/styles/variables';
+
+.timeline {
+  min-height: 30vh;
+  max-height: 80vh;
+  overflow: auto;
+}
+
+.timeline-list {
+  position: relative;
+  padding: 15px;
+
+  &:before {
+    background: $color-primary;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 10px;
+    width: 4px;
+    content: '';
+    margin-left: 18px;
+    z-index: 0;
+  }
+
+  li {
+    display: flex;
+    align-items: center;   // ← вертикальное центрирование годов
+    margin-bottom: 20px;   // ← больше пространства между записями
+
+    &:last-child {
+      margin: 0;
+    }
+
+    .timeline-date {
+      padding: 6px 10px;
+      background: $color-white;
+      position: relative;
+      left: -15px;
+      white-space: nowrap;   // ← не переносить на новую строку
+      text-align: center;
+      font-weight: 600;
+      font-size: 13px;
+      color: $color-text;
+      z-index: 1;
+      align-self: center;
+    }
+
+    .timeline-event {
+      position: relative;
+      flex: 1;
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);  // ← стрелочка тоже по центру
+        left: -10px;
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-right: 10px solid $color-bg-light;
+      }
+
+      h3 {
+        font: 700 16px/20px $font-primary;
+        margin-bottom: 8px;
+      }
+
+      p {
+        font-size: 14px;
+        line-height: 1.6;
+      }
+    }
+  }
+}

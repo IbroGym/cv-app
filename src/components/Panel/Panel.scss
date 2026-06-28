@@ -1,0 +1,98 @@
+@import '../../assets/styles/variables';
+
+$burger-width: 44px;
+
+.panel {
+  background-color: $color-dark;
+  color: $color-white;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: width 0.3s ease;
+
+  &.open {
+    width: $panel-width;
+  }
+
+  &.closed {
+    width: $burger-width;
+  }
+}
+
+// Hamburger button — always at the top, always visible
+.hamburger-btn {
+  width: $burger-width;
+  height: $burger-width;
+  min-width: $burger-width;
+  min-height: $burger-width;
+  flex-shrink: 0;
+  background: transparent;
+  color: $color-white;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  margin-top: 6px;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+// Panel content — full width, clips when panel is narrow
+.panel-content {
+  display: flex;
+  flex-direction: column;
+  width: $panel-width;
+  flex: 1;
+  padding: 10px 0 20px;
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+
+  .panel.closed & {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+// PhotoBox inside panel
+.panel .photo-box {
+  padding: 0 20px;
+  margin-bottom: 10px;
+
+  .crop-photo {
+    width: 90px;
+    height: 90px;
+  }
+
+  .title {
+    font-size: 15px;
+    line-height: 20px;
+    color: $color-white;
+  }
+
+  figcaption {
+    color: $color-white;
+  }
+}
+
+.panel-footer {
+  padding: 15px;
+  margin-top: auto;
+  white-space: nowrap;
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .panel.open {
+    width: 200px;
+  }
+}

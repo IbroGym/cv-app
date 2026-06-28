@@ -1,0 +1,22 @@
+@import '../../assets/styles/variables';
+
+.inner-page {
+  padding: 30px 40px;
+  max-width: 100%;
+
+  section {
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: $color-text;
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .inner-page {
+    padding: 20px 15px;
+  }
+}

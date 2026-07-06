@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import Box from '../../components/Box';
@@ -7,30 +8,10 @@ import TimeLine from '../../components/TimeLine';
 import Portfolio from '../../components/Portfolio';
 import Address from '../../components/Address';
 import Feedback from '../../components/Feedback';
+import Skills from '../../components/Skills';
+import { fetchEducations } from '../../features/education/educationSlice';
 import './Inner.scss';
 import avatar from '../../assets/images/avatar.png';
-
-// ── Education ──────────────────────────────────────────────────────────────────
-const educationData = [
-  {
-    year: '2017 – 2023',
-    title: 'High School Education',
-    description:
-      'Nazarbayev Intellectual School, Atyrau, Kazakhstan. Graduated with a strong interest in mathematics, computer science, and competitive chess, which later shaped both my academic and professional journey.',
-  },
-  {
-    year: '2023 – 2026',
-    title: "Bachelor's Degree in Software Engineering",
-    description:
-      'Astana IT University, Astana, Kazakhstan. Studied software engineering, algorithms, databases, web development, QA Testing and object-oriented programming.',
-  },
-  {
-    year: '2025 – 2026',
-    title: 'Front-End Development using AI tools',
-    description:
-      'Epam Systems, online course. Deepened my knowledge of frontend development during the 31-week course.',
-  },
-];
 
 // ── Experience ─────────────────────────────────────────────────────────────────
 const experienceData = [
@@ -102,6 +83,15 @@ const feedbackData = [
 
 // ── Page ───────────────────────────────────────────────────────────────────────
 const Inner = () => {
+  const dispatch = useDispatch();
+  const { data: educationData, status: educationStatus, error: educationError } = useSelector(
+    (state) => state.education
+  );
+
+  useEffect(() => {
+    dispatch(fetchEducations());
+  }, [dispatch]);
+
   return (
     <div className="inner-page">
       <section id="about">
@@ -113,7 +103,17 @@ const Inner = () => {
 
       <section id="education">
         <Box title="Education">
-          <TimeLine data={educationData} />
+          <TimeLine
+            data={educationData}
+            status={educationStatus}
+            error={educationError}
+          />
+        </Box>
+      </section>
+
+      <section id="skills">
+        <Box title="Skills">
+          <Skills />
         </Box>
       </section>
 

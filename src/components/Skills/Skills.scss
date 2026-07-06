@@ -1,0 +1,160 @@
+@import '../../assets/styles/variables';
+
+// ── Header ───────────────────────────────────────────────────────────────
+.skills-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
+.skills-toggle-btn {
+  background-color: $color-dark;
+  color: $color-white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $color-primary;
+  }
+}
+
+// ── Form ─────────────────────────────────────────────────────────────────
+.skill-form {
+  border: 1px solid $color-primary;
+  border-radius: 6px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.skill-form-field {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  gap: 16px;
+}
+
+.skill-form-label {
+  width: 90px;
+  flex-shrink: 0;
+  font-weight: 600;
+  font-size: 14px;
+  color: $color-text;
+  padding-top: 8px;
+}
+
+.skill-form-input {
+  flex: 1;
+  max-width: 220px;
+  border: 1px solid $color-border;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: $color-text;
+  outline: none;
+  transition: border-color 0.2s ease;
+
+  &:focus {
+    border-color: $color-primary;
+  }
+
+  &--error {
+    border-color: #e74c3c;
+
+    &:focus {
+      border-color: #e74c3c;
+    }
+  }
+}
+
+.skill-form-error {
+  color: #e74c3c !important;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 4px;
+  display: block;
+}
+
+.skill-form-field {
+  flex-direction: column;
+  align-items: flex-start;
+
+  > .skill-form-label {
+    width: auto;
+    padding-top: 0;
+    margin-bottom: 6px;
+  }
+}
+
+.skill-form-submit {
+  background-color: $color-dark;
+  color: $color-white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: not-allowed;
+  opacity: 0.65;
+  transition: background-color 0.3s ease, opacity 0.2s ease;
+
+  &--active {
+    background-color: $color-primary;
+    cursor: pointer;
+    opacity: 1;
+
+    &:hover {
+      background-color: darken(#26c17e, 8%);
+    }
+  }
+}
+
+// ── Chart ─────────────────────────────────────────────────────────────────
+.skills-chart {
+  margin-top: 8px;
+}
+
+.skills-bar-row {
+  margin-bottom: 4px;
+}
+
+.skills-bar {
+  background-color: $color-primary;
+  border-radius: 2px;
+  min-width: 30px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  transition: width 0.5s ease;
+}
+
+.skills-bar-label {
+  color: $color-white;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.skills-axis {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px solid $color-border;
+  font-size: 12px;
+  color: $color-text-light;
+}
+
+// ── Loading ───────────────────────────────────────────────────────────────
+.skills-loading {
+  text-align: center;
+  color: $color-text-light;
+  padding: 20px 0;
+}

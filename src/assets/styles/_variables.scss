@@ -7,13 +7,20 @@ $color-text-light: #667081;
 $color-bg-light: #eee;
 $color-white: #fff;
 $color-border: #ddd;
+$color-error: #e74c3c;
 
 // Fonts
 $font-primary: 'Open Sans', sans-serif;
 
 // Panel
 $panel-width: 250px;
-$panel-mobile-width: 54px;
 
 // Breakpoints
-$breakpoint-mobile: 599px;
+$breakpoint-mobile: 768px;
+
+// Layout
+$burger-btn-size: 44px;
+
+// Timing
+$transition-fast: 0.2s ease;
+$transition-normal: 0.3s ease;

@@ -1,1 +1,2 @@
-npm test
+# pre-commit hook intentionally left empty
+# Coverage check runs on pre-push (see .husky/pre-push)

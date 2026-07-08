@@ -28,6 +28,8 @@ const defaultSkills = [
   { name: 'JavaScript', range: 90 },
 ];
 
+const SERVER_TIMING_MS = 3000; // simulate realistic API latency
+
 export default function server() {
   createServer({
     models: {
@@ -40,7 +42,7 @@ export default function server() {
 
     routes() {
       this.namespace = 'api';
-      this.timing = 3000;
+      this.timing = SERVER_TIMING_MS;
 
       this.get('/educations', () => {
         return educations;

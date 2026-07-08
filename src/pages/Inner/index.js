@@ -11,7 +11,7 @@ import Feedback from '../../components/Feedback';
 import Skills from '../../components/Skills';
 import { fetchEducations } from '../../features/education/educationSlice';
 import './Inner.scss';
-import avatar from '../../assets/images/avatar.png';
+import avatar from '../../assets/images/avatar.jpg';
 
 // ── Experience ─────────────────────────────────────────────────────────────────
 const experienceData = [
@@ -65,7 +65,7 @@ const feedbackData = [
     feedback:
       'I wholeheartedly recommend Ibragim for any team or organization. His passion, skill, and professionalism are evident not only in chess but in all his endeavors. I believe he has the potential to excel in any field he chooses to pursue, making him an outstanding asset to any team.',
     reporter: {
-      photoUrl: avatar,
+      photoUrl: 'https://ui-avatars.com/api/?name=Arsultan+Nursapa&background=2c3e50&color=fff&size=128&rounded=true',
       name: 'Arsultan Nursapa',
       citeUrl: 'https://www.linkedin.com/in/anursapa/',
     },
@@ -74,7 +74,7 @@ const feedbackData = [
     feedback:
       'Ibragim is an outstanding individual with a rare combination of technical prowess and excellent interpersonal skills. He has been a tremendous asset to our chess club, and I am confident that he will bring the same level of dedication and skill to any endeavor he undertakes.',
     reporter: {
-      photoUrl: avatar,
+      photoUrl: 'https://ui-avatars.com/api/?name=Caner+Onoglu&background=27ae60&color=fff&size=128&rounded=true',
       name: 'Caner Onoglu',
       citeUrl: 'https://www.linkedin.com/in/caneronoglu/',
     },
@@ -94,6 +94,9 @@ const Inner = () => {
 
   return (
     <div className="inner-page">
+      {/* Unique h1 for SEO — visually hidden, screen-reader accessible */}
+      <h1 className="visually-hidden">Ibragim Galymzhanuly — CV</h1>
+
       <section id="about">
         <Box
           title="About me"

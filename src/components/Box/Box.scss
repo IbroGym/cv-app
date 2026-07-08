@@ -9,3 +9,14 @@
     font: 700 25px/30px $font-primary;
   }
 }
+
+@media (max-width: 768px) {
+  .info-box {
+    margin-bottom: 30px;
+
+    h2 {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+  }
+}

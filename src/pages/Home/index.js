@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
 import './Home.scss';
-import avatar from '../../assets/images/avatar.png';
+import avatar from '../../assets/images/avatar.jpg';
 import heroBg from '../../assets/images/hero_bg.png';
 
 const Home = () => {

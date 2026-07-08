@@ -38,3 +38,22 @@
     color: $color-text;
   }
 }
+
+@media (max-width: 768px) {
+  .expertise-list {
+    li {
+      flex-direction: column;
+    }
+
+    .expertise-list-date {
+      width: 100%;
+      min-width: unset;
+      margin-right: 0;
+      margin-bottom: 6px;
+
+      span {
+        font-size: 13px;
+      }
+    }
+  }
+}

@@ -21,7 +21,7 @@ const navigationItems = [
   { label: 'Feedback', anchor: 'feedback', icon: faComment },
 ];
 
-const Navigation = () => {
+const Navigation = ({ onNavClick }) => {
   const [activeItem, setActiveItem] = useState('about');
 
   const handleClick = (anchor) => {
@@ -30,6 +30,7 @@ const Navigation = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+    if (onNavClick) onNavClick();
   };
 
   return (

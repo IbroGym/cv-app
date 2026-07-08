@@ -19,7 +19,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: background-color 0.3s ease;
+  transition: background-color $transition-normal;
 
   &:hover {
     background-color: $color-primary;
@@ -36,61 +36,62 @@
 
 .skill-form-field {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   margin-bottom: 16px;
-  gap: 16px;
+  gap: 4px;
 }
 
 .skill-form-label {
-  width: 90px;
-  flex-shrink: 0;
   font-weight: 600;
   font-size: 14px;
   color: $color-text;
-  padding-top: 8px;
+  margin-bottom: 6px;
 }
 
 .skill-form-input {
-  flex: 1;
-  max-width: 220px;
+  width: 100%;
+  max-width: 300px;
   border: 1px solid $color-border;
   border-radius: 4px;
   padding: 8px 12px;
   font-size: 14px;
   color: $color-text;
   outline: none;
-  transition: border-color 0.2s ease;
+  transition: border-color $transition-fast, box-shadow $transition-fast;
 
-  &:focus {
-    border-color: $color-primary;
+  // Hover state (normal)
+  &:hover:not(:focus):not(.skill-form-input--error) {
+    border-color: darken(#ccc, 15%);
   }
 
+  // Focus state (normal)
+  &:focus {
+    border-color: $color-primary;
+    box-shadow: 0 0 0 2px rgba(38, 193, 126, 0.2);
+  }
+
+  // Error state
   &--error {
-    border-color: #e74c3c;
+    border-color: $color-error;
+
+    &:hover {
+      border-color: darken(#e74c3c, 8%);
+    }
 
     &:focus {
-      border-color: #e74c3c;
+      border-color: $color-error;
+      box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
     }
   }
 }
 
 .skill-form-error {
-  color: #e74c3c !important;
+  color: $color-error !important;
   font-size: 12px;
   font-weight: 500;
-  margin-top: 4px;
+  margin-top: 2px;
   display: block;
-}
-
-.skill-form-field {
-  flex-direction: column;
-  align-items: flex-start;
-
-  > .skill-form-label {
-    width: auto;
-    padding-top: 0;
-    margin-bottom: 6px;
-  }
 }
 
 .skill-form-submit {
@@ -103,8 +104,9 @@
   font-weight: 600;
   cursor: not-allowed;
   opacity: 0.65;
-  transition: background-color 0.3s ease, opacity 0.2s ease;
+  transition: background-color $transition-normal, opacity $transition-fast;
 
+  // Active (enabled) state
   &--active {
     background-color: $color-primary;
     cursor: pointer;
@@ -112,6 +114,11 @@
 
     &:hover {
       background-color: darken(#26c17e, 8%);
+    }
+
+    &:focus {
+      outline: 2px solid $color-primary;
+      outline-offset: 2px;
     }
   }
 }
@@ -157,4 +164,16 @@
   text-align: center;
   color: $color-text-light;
   padding: 20px 0;
+}
+
+// ── Mobile ────────────────────────────────────────────────────────────────
+@media (max-width: $breakpoint-mobile) {
+  .skills-axis {
+    font-size: 10px;
+  }
+
+  .skill-form-input {
+    max-width: 100%;
+    width: 100%;
+  }
 }

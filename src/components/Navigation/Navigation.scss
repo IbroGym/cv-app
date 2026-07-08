@@ -34,20 +34,21 @@
   }
 }
 
-@media (max-width: $breakpoint-mobile) {
+@media (max-width: 768px) {
   .navigation {
     li {
       a {
-        justify-content: center;
-        padding: 12px 5px;
+        justify-content: flex-start;
+        padding: 14px 20px;
 
         .nav-icon {
-          margin-right: 0;
+          margin-right: 15px;
           font-size: 18px;
         }
 
         .nav-label {
-          display: none;
+          display: block;
+          font-size: 15px;
         }
       }
     }

@@ -1,7 +1,63 @@
 @import '../../assets/styles/variables';
 
-$burger-width: 44px;
+// Note: $burger-btn-size and $breakpoint-mobile defined in _variables.scss
 
+// ── Hamburger button ─────────────────────────────────────────────────────────
+.hamburger-btn {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 300;
+  width: $burger-btn-size;
+  height: $burger-btn-size;
+  background: $color-dark;
+  color: $color-white;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // Slides right with the panel on desktop
+  transition: left $transition-normal, background $transition-fast;
+
+  &:hover {
+    background: lighten(#222935, 8%);
+  }
+
+  // Desktop: button sits at right edge of open panel
+  &--open {
+    left: $panel-width;
+  }
+
+  // Mobile: button always stays at top-left corner
+  @media (max-width: $breakpoint-mobile) {
+    &--open {
+      left: 0;
+    }
+  }
+}
+
+// ── Dark backdrop (mobile only) ───────────────────────────────────────────────
+.panel-backdrop {
+  display: none;
+
+  @media (max-width: $breakpoint-mobile) {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 150;
+    animation: fadeIn 0.25s ease;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+// ── Panel ─────────────────────────────────────────────────────────────────────
 .panel {
   background-color: $color-dark;
   color: $color-white;
@@ -15,56 +71,56 @@ $burger-width: 44px;
   flex-shrink: 0;
   transition: width 0.3s ease;
 
-  &.open {
-    width: $panel-width;
-  }
+  &.open  { width: $panel-width; }
+  &.closed { width: 0; }
 
-  &.closed {
-    width: $burger-width;
-  }
-}
+  // ── Mobile overrides ────────────────────────────────────────────────────────
+  @media (max-width: $breakpoint-mobile) {
+    // Overlay on top of content — doesn't push anything
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    height: 100vh;
+    width: $panel-width !important; // always full width when rendered
+    transition: transform 0.3s ease;
 
-// Hamburger button — always at the top, always visible
-.hamburger-btn {
-  width: $burger-width;
-  height: $burger-width;
-  min-width: $burger-width;
-  min-height: $burger-width;
-  flex-shrink: 0;
-  background: transparent;
-  color: $color-white;
-  border: none;
-  font-size: 18px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
-  margin-top: 6px;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.08);
+    &.open  { transform: translateX(0); }
+    &.closed { transform: translateX(-100%); }
   }
 }
 
-// Panel content — full width, clips when panel is narrow
+// ── Panel content ─────────────────────────────────────────────────────────────
 .panel-content {
   display: flex;
   flex-direction: column;
   width: $panel-width;
   flex: 1;
-  padding: 10px 0 20px;
   overflow: hidden;
   opacity: 1;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.15s ease;
 
   .panel.closed & {
     opacity: 0;
     pointer-events: none;
   }
+
+  @media (max-width: $breakpoint-mobile) {
+    // On mobile always show content (panel slides in/out via transform)
+    .panel.closed & {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
 }
 
-// PhotoBox inside panel
+// Spacer so content doesn't hide under the hamburger button
+.panel-top-spacer {
+  height: $burger-btn-size;
+  flex-shrink: 0;
+}
+
+// ── PhotoBox inside panel ─────────────────────────────────────────────────────
 .panel .photo-box {
   padding: 0 20px;
   margin-bottom: 10px;
@@ -89,10 +145,4 @@ $burger-width: 44px;
   padding: 15px;
   margin-top: auto;
   white-space: nowrap;
-}
-
-@media (max-width: $breakpoint-mobile) {
-  .panel.open {
-    width: 200px;
-  }
 }

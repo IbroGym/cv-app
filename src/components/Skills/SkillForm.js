@@ -79,8 +79,8 @@ const SkillForm = () => {
 
       <button
         type="submit"
-        className={`skill-form-submit${isValid ? ' skill-form-submit--active' : ''}`}
-        disabled={!isValid}
+        className={`skill-form-submit${isValid && !formik.isSubmitting ? ' skill-form-submit--active' : ''}`}
+        disabled={!isValid || formik.isSubmitting}
       >
         Add skill
       </button>
